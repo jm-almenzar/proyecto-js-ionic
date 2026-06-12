@@ -1,0 +1,179 @@
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+    font-family: "Montserrat", sans-serif;
+    background-image: url(../img/patern.png);
+    text-align: center;
+    padding-bottom: 1em;
+    
+}
+
+main{
+    color: blue;
+    font-weight: bold;
+    border: 1px solid #fff;
+    border-radius: 1em;
+    box-shadow: 10px 20px 50px #333;
+    background-color:#ddd;
+    /* margin: 0 auto; */
+    /* width: 50%; */
+}
+
+h1, h3{
+    color: white !important;
+    text-align: center;
+    margin: .5em auto !important;
+    padding: .5em;
+    font-size: 4em !important;
+    background-color: blue;
+    border-radius: .5em;
+    border: 5px solid white;
+}
+
+h3{
+    /* color: black !important; */
+    font-size: 3em !important;
+    background-color: cadetblue;
+    border: 0;
+}
+
+article{
+    transition: all .5s;
+    background-color: white;
+    border-radius: 1em;
+
+    display: inline-flex;
+}
+
+article:hover {
+  transition: all .5s;
+  transform: scale(1.02);
+  border: 1px solid #bbb;
+}
+
+article img{
+    margin-right: 1em;
+    max-width: 200px;
+    max-height: 300px;
+    border-radius: .5em;    
+}
+
+input, select{
+    border-radius: .5em;    
+}
+
+.option-default{
+    background-color: #bbb;
+}
+
+.form-new-card{
+    background-color: white;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0 0 1em 0;
+    width: 50%;
+
+}
+
+.button-delete{
+    color: #fff;
+    background-color: red;
+    padding: .5em;
+    border-radius: .5em;
+    font-weight: bold;
+}
+
+.button-add{
+    color: #fff;
+    background-color:green;
+    padding: .5em;
+    border-radius: .5em;
+    font-weight: bold;
+}
+
+.icon{
+    color:white;
+    background-color: blue;
+    padding: .25em;
+    font-size: 1.5em;
+    border-radius: .25em;
+    display: inline-block;
+}
+
+
+
+/* .tarjetas{
+    background-color: orange;
+    padding: 1em;
+    margin: 1em auto;
+    width: 75%;
+    display: flex;
+} */
+
+
+.tarjeta{
+    /* margin: 1em 1em 1em 0; */
+    background-color: white;
+}
+
+/* .tarjeta{
+    background-color: white;
+    border: 3px solid #333;
+    padding: .5em;
+    margin: .5em;
+    width: 45%;
+    text-align: left;
+    display: flex;
+} */
+
+/* .tarjeta img{
+    margin-right: 1em;
+    max-width: 200px;
+    max-height: 300px;
+} */
+
+.tarjeta h2{
+    height: 2em;
+}
+
+/* .tarjeta p{
+    flex-direction: column;
+} */
+
+
+.completado, .pendiente{
+    color: white;
+    padding: .75em;
+    border-radius: 1.5em;
+    bottom: 0px;
+}
+
+.completado{
+    background-color: green;
+}
+
+.pendiente{
+    background-color: red;
+    font-style: italic;
+}
+
+.tipo{
+    color:cadetblue;
+    font-style: italic;
+}
+
+#contenedor-fichas{
+    padding: 2em 1em;
+}
+
+
+/* #contenedor-fichas{
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: start;
+} */
+

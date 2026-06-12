@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <!-- Carga de CSS -->
+   <link rel="stylesheet" href="/css/styles.css" />
+   <link rel="stylesheet" href="/css/bootstrap.css" />
+   <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+   /> -->
+
+   <!-- Carga de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+   <!-- Carga de Scripts -->
+   <script src="/js/main.js" type="module"></script>
+   <script src="/js/bootstrap.js" type="module"></script>
+   <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous">
+   </script> -->
+
+   <title>Catálogo de Ocio</title>
+
+</head>
+
+<body>
+
+   <h1 class="bungee-regular container">K-TALOGOCIO</h1>
+
+   <main class="container">
+      <section style="grid-template-columns: 1fr 1fr;" class="d-grid gap-4" id="contenedor-fichas">
+  
+         <% cards.forEach(card => { %>
+         
+         <article class="p-4">
+            <img src="<%= card.imagen %>">
+
+            <div>
+
+               <h2 class="bungee-regular"><%= card.nombre %></h2>
+               
+               <p><%= card.genero %></p>
+
+               <p class="icon"><%= card.categoria %></p>
+
+               <p><%= card.valoracion %></p>
+
+               <p><%= card.completado %></p>
+
+               <form
+                  action="/cards/<%= card.id %>/delete"
+                  method="post">
+
+                  <button class="button-delete">Borrar ficha <i class="fa-solid fa-file-circle-xmark"></i></button>
+
+               </form>
+
+            </div>
+
+         </article>
+
+      <% }) %>
+
+      </section>
+
+      <hr>
+
+      <h3 class="bungee-regular">Nueva ficha</h3>
+
+      <!-- Formulario -->
+      <section>
+         <form id="form-card" action="/cards" method="post" class="form-new-card">
+            <p>
+               <label for="nombre">Nombre</label>
+               <input
+                  id="nombre"
+                  type="text"
+                  name="nombre"
+                  required
+                  minlength="3"
+                  maxlength="60"
+                  value="<%= datos.nombre ?? '' %>"
+               >
+            </p>
+            <p>
+               <label for="genero">Género</label>
+               <select id="genero" name="genero" required>
+
+                  <option value="" <%= !datos.genero ? 'selected' : '' %> class="option-default">
+                     Selecciona...
+                  </option>
+
+                  <option
+                     value="Ciencia Ficción"
+                     <%= datos.genero === 'Ciencia Ficción' ? 'selected' : '' %>>
+                     Ciencia Ficción
+                  </option>
+
+                  <option
+                     value="Acción-Aventura"
+                     <%= datos.genero === 'Acción-Aventura' ? 'selected' : '' %>>
+                     Acción-Aventura
+                  </option>
+
+                  <option
+                     value="Fantasía"
+                     <%= datos.genero === 'Fantasía' ? 'selected' : '' %>>
+                     Fantasía
+                  </option>
+
+                  <option
+                     value="Cyberpunk"
+                     <%= datos.genero === 'Cyberpunk' ? 'selected' : '' %>>
+                     Cyberpunk
+                  </option>
+
+               </select>
+            </p>
+
+            <p>
+               <label for="categoría">Categoría</label>
+               <select id="categoria" name="categoria" required>
+
+                  <option value="" <%= !datos.categoria ? 'selected' : '' %> class="option-default">
+                     Selecciona...
+                  </option>
+
+                  <option
+                     value="Película"
+                     <%= datos.genero === 'Película' ? 'selected' : '' %>>
+                     Película
+                  </option>
+
+                  <option
+                     value="Videojuego"
+                     <%= datos.genero === 'Videojuego' ? 'selected' : '' %>>
+                     Videojuego
+                  </option>
+
+                  <option
+                     value="Libro"
+                     <%= datos.genero === 'Libro' ? 'selected' : '' %>>
+                     Libro
+                  </option>
+
+                  <option
+                     value="Disco"
+                     <%= datos.genero === 'Disco' ? 'selected' : '' %>>
+                     Disco
+                  </option>
+
+               </select>
+            </p>
+
+            <p>
+               <label for="valoracion">Valoración</label>
+
+               <input
+                  id="valoracion"
+                  type="number"
+                  name="valoracion"
+                  min="1"
+                  max="5"
+                  step="1"
+                  required
+                  value="<%= datos.valoracion ?? '' %>">
+            </p>
+
+            <p>
+               <label>Completado</label>
+                  
+               <input
+                  type="checkbox"
+                  name="completado"
+                  required
+                  <%= datos.completado === 'on' ? 'checked' : '' %>>
+            </p>
+
+            <p>
+               <label for="imagen"></label>
+               <input
+                  id="imagen"
+                  name="imagen"
+                  type="file"
+                  required
+                  value="<%= datos.imagen ?? '' %>">
+            </p>
+
+            <button class="button-add">Añadir ficha <i class="fa-solid fa-file-circle-plus"></i></button>
+
+         </form>
+
+      </section>
+   </main>
+
+   <!-- Errores de validación -->
+
+   <% if (errores.length > 0) { %>
+
+      <section>
+
+         <h2>
+            Errores de validación en servidor
+         </h2>
+
+         <ul>
+
+            <% errores.forEach(error => { %>
+
+               <li>
+                  <%= error %>
+               </li>
+
+            <% }) %>
+
+         </ul>
+
+      </section>
+
+   <% } %>
+
+   <script src="/js/validacion-cliente.js"></script>
+
+</body>
+
+</html>

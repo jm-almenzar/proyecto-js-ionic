@@ -1,0 +1,30 @@
+services:
+  cards-app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: dev
+    container_name: cards-app-dev
+    env_file:
+      - ./.env
+    volumes:
+      - ./app/src:/app/src
+      - node-modules:/app/node_modules
+      - yarn-cache:/app/.yarn
+    ports:
+      - "${PORT}:3000"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./app/src
+          target: ./src
+          initial_sync: true
+        - action: sync
+          path: ./app/src/public
+          target: ./src/public
+
+volumes:
+  node-modules:
+    name: cards-app-dev-node-modules
+  yarn-cache:
+    name: cards-app-dev-yarn-cache
